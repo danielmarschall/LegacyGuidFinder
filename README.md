@@ -1,4 +1,4 @@
-#Legacy GUID finder
+# Legacy GUID finder
 
 This program will search your registry for legacy Microsoft GUID.
 
