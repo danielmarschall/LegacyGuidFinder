@@ -22,6 +22,9 @@ function splitValues($value) {
 function getPriority($value) {
     if (str_starts_with($value, 'IID_')) return 3;
     if (str_starts_with($value, 'CLSID_')) return 2;
+    if (str_starts_with($value, 'CGID_')) return 3;
+    if (str_starts_with($value, 'CATID_')) return 3;
+    if (str_starts_with($value, 'SVCID_')) return 3;
     return 1;
 }
 
@@ -29,7 +32,7 @@ function getPriority($value) {
  * Basisname ohne Prefix
  */
 function normalizeBase($value) {
-    return preg_replace('/^(IID_|CLSID_)/', '', $value);
+    return preg_replace('/^(IID_|CLSID_|CGID_|CATID_|SVCID_)/', '', $value);
 }
 
 // 1) Einlesen + erstes Flattening
