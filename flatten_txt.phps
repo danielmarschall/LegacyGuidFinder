@@ -56,6 +56,8 @@ foreach ($lines as $line) {
 
 $output = [];
 
+ksort($data);
+
 // 2) Verarbeitung pro Key
 foreach ($data as $key => $values) {
 
