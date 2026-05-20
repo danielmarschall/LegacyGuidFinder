@@ -1,7 +1,7 @@
 <?php
 
 $inputFile  = __DIR__ . '/FoundGUIDs.txt';
-$outputFile = __DIR__ . '/FoundGUIDs_.txt';
+$outputFile = __DIR__ . '/FoundGUIDs.txt';
 
 $lines = file($inputFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
