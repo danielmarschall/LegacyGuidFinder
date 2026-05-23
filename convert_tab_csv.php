@@ -1,15 +1,7 @@
 <?php
 
-/*
-This script reads a text file containing media subtype names and GUIDs, converts each GUID to uppercase with curly braces, and writes the result in the format:
-
-{GUID} = NAME
-
-The converted entries are saved to a new output file.
-*/
-
-$inputFile = "input.txt";
-$outputFile = "output.txt";
+$inputFile = __DIR__ . "/convert_tab_csv_input.txt";
+$outputFile = __DIR__ . "/FoundGUIDs.txt";
 
 $lines = file($inputFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
 
@@ -26,7 +18,7 @@ foreach ($lines as $line) {
     $output[] = $guid . '=' . $name;
 }
 
-file_put_contents($outputFile, implode(PHP_EOL, $output));
+file_put_contents($outputFile, implode(PHP_EOL, $output) . PHP_EOL, FILE_APPEND);
+file_put_contents($inputFile, "IUnknown        00000000-0000-0000-c000-000000000046\n");
 
-echo "Fertig.\n";
-
+include __DIR__ . '/flatten_txt.phps';

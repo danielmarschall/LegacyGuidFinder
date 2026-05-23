@@ -64,6 +64,7 @@ ksort($data);
 // 2) Verarbeitung pro Key
 foreach ($data as $key => $values) {
 
+/*
 if (
     substr($key,20,1) !== 'C' && // OLE GUID C000, or Office365 GUID CE00 
     substr($key,20,1) !== 'c' &&
@@ -71,6 +72,7 @@ if (
 ) {
     echo "IGNORED NON-MS GUID: $key\n";
 }
+*/
 
     // unique roh
     $values = array_values(array_unique($values));

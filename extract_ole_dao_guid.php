@@ -102,8 +102,9 @@ function extractDaoGuids(string $filename): array
 
 // Beispiel
 try {
-    $guids = extractOleGuids('mapiguid.h');
-    $guids = array_merge($guids,extractDaoGuids('mapiguid.h'));
+    $file = __DIR__ . '/extract_ole_dao_guid_input.txt';
+    $guids = extractOleGuids($file);
+    $guids = array_merge($guids,extractDaoGuids($file));
 
     foreach ($guids as $name => $guid) {
         echo strtoupper($guid) . '=' . $name . PHP_EOL;
