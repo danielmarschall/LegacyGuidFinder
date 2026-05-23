@@ -65,10 +65,45 @@ function extractOleGuids(string $filename): array
     return $result;
 }
 
+function extractDaoGuids(string $filename): array
+{
+    $content = file_get_contents($filename);
+
+    if ($content === false) {
+        throw new RuntimeException("Datei konnte nicht gelesen werden: $filename");
+    }
+
+    $result = [];
+
+    // Leerzeichen/Zeilenumbrüche egal
+    $pattern = '/DEFINE_DAOGUID\s*\(\s*' .
+        '([A-Za-z0-9_]+)\s*,\s*' .   // Name
+        '(0x?[0-9A-Fa-f]*)\s*' .
+        '\)\s*;/';
+
+    preg_match_all($pattern, $content, $matches, PREG_SET_ORDER);
+
+    foreach ($matches as $m) {
+        $name = $m[1];
+
+        $part1 = strtoupper(str_pad(normalizeHex($m[2]), 8, '0', STR_PAD_LEFT));
+
+        $guid = sprintf(
+            '{%s-0000-0010-8000-00AA006D2EA4}',
+            $part1
+        );
+
+        $result[$name] = $guid;
+    }
+
+    return $result;
+}
+
 
 // Beispiel
 try {
     $guids = extractOleGuids('mapiguid.h');
+    $guids = array_merge($guids,extractDaoGuids('mapiguid.h'));
 
     foreach ($guids as $name => $guid) {
         echo strtoupper($guid) . '=' . $name . PHP_EOL;
