@@ -19,3 +19,12 @@ def DEFINE_OLEGUID(l,w1,w2):
 
 
 DEFINE_DAOGUID(CLSID_CDAODBEngine, 0x00000010) results in GUID 00000010-0000-0010-8000-00AA006D2EA4
+
+--- Mediasubtype (FourCC)
+
+WMMEDIASUBTYPE_wxyz	zzyyxxww-0000-0010-8000-00AA00389B71
+
+Unless there are 00-Bytes in the FourCC code, then its just a magic number:
+
+WMMEDIASUBTYPE_MP3      00000055-0000-0010-8000-00AA00389B71
+

@@ -119,3 +119,11 @@ if (
 file_put_contents($outputFile, implode(PHP_EOL, $output).PHP_EOL);
 
 echo "Done.\n";
+
+
+
+system('cat FoundGUIDs.txt | grep "\-8000\-" | grep 00AA006D2EA4 > Found_DAO.txt');
+system('cat FoundGUIDs.txt | grep "\-8000\-" | grep 00AA00389B71 > Found_Mediasubtype.txt');
+system('cat FoundGUIDs.txt | grep "\-C000\-000000000046" > Found_OLE.txt');
+system('cat FoundGUIDs.txt | grep -v "\-C000\-000000000046" | grep -v 00AA006D2EA4 | grep -v 00AA00389B71 > Found_Other.txt');
+
