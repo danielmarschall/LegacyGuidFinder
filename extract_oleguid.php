@@ -4,6 +4,9 @@ function normalizeHex(string $x): string
 {
     $x = trim($x);
 
+    // L/l am Ende entfernen
+    $x = preg_replace('/L$/i', '', $x);
+
     // Hat bereits 0x Prefix?
     if (stripos($x, '0x') === 0) {
         return substr($x, 2);
